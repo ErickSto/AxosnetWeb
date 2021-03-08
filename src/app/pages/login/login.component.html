@@ -1,0 +1,13 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <div class="fadeIn first">
+            <img src="https://static.wixstatic.com/media/211ca5_b5c871b673244a9383c9356feb817ed0~mv2.png/v1/fill/w_144,h_29,al_c,q_85,usm_0.66_1.00_0.01/Logo%20original%20-%20axn%202019%20Recurso%201-8.webp" style="width:144px;height:29px;object-fit:cover;object-position:50% 50%; margin-top: 40px;"
+            />
+        </div>
+        <form [formGroup]="credenciales" (ngSubmit)="iniciarSesion()">
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario" formControlName="username" required>
+            <input type="password" id="password" class="fadeIn third" name="login" placeholder="password" formControlName="password" required>
+            <input type="submit" class="fadeIn fourth" value="Entrar">
+        </form>
+    </div>
+</div>

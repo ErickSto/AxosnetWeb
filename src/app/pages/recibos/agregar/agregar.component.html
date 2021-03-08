@@ -1,0 +1,38 @@
+<div class="container">
+    <form [formGroup]="recibo">
+        <p *ngIf="edicion" class="col-12 h5">
+            Folio : <span style="color: red;">{{folio}}</span>
+        </p>
+        <mat-form-field class="col-12">
+            <mat-label>Proveedor</mat-label>
+            <input formControlName="Id_proveedor" required value="proveedor.Id_Proveedor" type="text" name="Id_proveedor" [formControl]="autoComplete" placeholder="Buscar proveedor" aria-label="Proveedor" matInput [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let proveedor of filteredOptions | async" [value]="proveedor.nombre">
+                    {{proveedor.nombre}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-6">
+            <mat-label>Monto</mat-label>
+            <input formControlName="monto" required matInput min="0.01" type="number" class="example-right-align">
+            <span matPrefix>$&nbsp;</span>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-6">
+            <mat-label>Moneda</mat-label>
+            <input formControlName="Id_moneda" required value="moneda.Id_Moneda" type="text" name="Id_Moneda" [formControl]="autoCompleteMoneda" placeholder="Buscar moneda" aria-label="Proveedor" matInput [matAutocomplete]="autoMoneda">
+            <mat-autocomplete #autoMoneda="matAutocomplete">
+                <mat-option *ngFor="let moneda of filteredOptionsMonedas | async" [value]="moneda.nombre">
+                    {{moneda.nombre}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-12">
+            <mat-label>Comentarios</mat-label>
+            <textarea formControlName="comentario" matInput required></textarea>
+        </mat-form-field>
+    </form>
+    <div class="col-12 text-right">
+        <button (click)="closeDialog()" class="mr-2" mat-flat-button color="warn"><mat-icon>cancel</mat-icon>Cancelar</button>
+        <button (click)="guardar()" mat-flat-button color="primary"><mat-icon>save</mat-icon>Guardar</button>
+    </div>
+</div>
